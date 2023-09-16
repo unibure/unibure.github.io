@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout</title>
+    <style>
+        .container{display: flex; flex-direction: column; width: 500px; align-items: center; justify-content: center;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <span id="num"> 000000 </span>
+            <button id="receive">인증번호 받기</button>
+        </div>
+        <div>
+            <button id="send"> 인증번호 전송 </button>
+            <span id="timer"> 3:00</span>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    let clicked = () => {
+        let receive = document.getElementById('receive')
+        let send = document.getElementById('send')
+        let num = document.getElementById('num')
+        let timer = document.getElementById('timer')
+
+        receive.addEventListener('click',() => {
+            let nums = String(Math.floor(Math.random() * 1000000)).padStart(6,"0");
+            num.innerText = nums
+            let time = 180;
+            setInterval(function(){
+            if (time >= 0){
+                let min = Math.floor(time / 60)
+                let sec = String(Math.floor(time % 60)).padStart(2,"0");                
+                time = time - 1;
+                let counter = min + ":" + sec
+                timer.innerText = counter
+            } 
+           
+        },1000)
+        })
+        send.addEventListener('click',()=>{
+            console.log(send)
+            nums.innerText = "3:00"
+        })
+
+   
+
+        
+    };
+    clicked();
+  
+    
+</script>
+</html>
