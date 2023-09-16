@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+* {margin:0; padding:0; box-sizing: border-box;}
+
+html,body {
+	height:100%;
+	background: #121111;
+}
+body {
+	font-size:1.2rem;
+  family: 'Nunito Sans', sans-serif;
+}
+
+div,span,article,section,header,footer,p,ul,li,fieldset,legend,label,a,nav {
+	box-sizing:border-box;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+	display:block;
+}
+ol,ul {
+	list-style:none;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+a {
+	text-decoration:none;
+  color:#fff;
+}
+.clearfix::before,.clearfix::after {
+	content:"";
+	display:block;
+	clear: both
+}
+

@@ -1,0 +1,17 @@
+
+body {background:url('../image/main_space_bg.jpg') center / cover; color:#fff;  padding:50px; width: 100%; height: 100%;}
+
+.main_font {  font-family: 'Nunito Sans', sans-serif;  }
+.sub_font {  font-family: 'Roboto Mono', monospace;}
+
+/* intro section 1 */
+#intro_section1 {}
+#intro_section1 .header {display: flex; gap: 2rem; }
+#intro_section1 .header .top_head {width: 20%;}
+#intro_section1 .header .top_head .title {font-weight: 700;font-size: 2.2rem; padding-top: 1vw; position: relative;}
+#intro_section1 .header .top_head .title:before {content:""; position: absolute; top:0; left:0; width: 100%; height: 1px; background-color: #fff;}
+#intro_section1 .header .gnb_nav { width: 75%; display: flex; align-items: center; justify-content: space-between; gap: 2vw;}
+#intro_section1 .header .gnb_nav .gnb_btn {width: 100%;display: flex; flex-direction: column;}
+#intro_section1 .header .gnb_nav .gnb_btn .gnb_tit {font-size:1.3rem;}
+#intro_section1 .header .gnb_nav .gnb_btn .gnb_desc {font-size: 0.9rem;padding: 0.6rem 0 0.5rem;}
+#intro_section1 .header .gnb_nav .gnb_btn .num {font-size: 0.8rem; display: block;}
