@@ -26,59 +26,118 @@
     <div class="nav_bar">
       <div class="contact_btn"></div>
     </div>
-  </div>
-  <section id="intro_section1">
-    <div class="header">
-      <div class="top_head">
-        <h1 class="title">unibure <br> Portfolio</h1>
+    <section id="intro_section1">
+      <div class="header">
+        <div class="top_head">
+          <h1 class="title">unibure <br> Developer</h1>
+        </div>
+        <ul class="gnb_nav">
+          <li class="gnb_btn" data-name="index">
+            <a href="javascript:void(0);" class="page_go">
+              <h2 class="gnb_tit">About</h2>
+              <p class="gnb_desc">
+                It's about me and my skill.
+                Click if you want to know.
+              </p>
+              <span class="num">01</span>
+            </a>
+          </li>
+          <li class="gnb_btn">
+            <a href="javascript:void(0);" class="page_go">
+              <h2 class="gnb_tit">WebSite</h2>
+              <p class="gnb_desc">
+                It's about me and my skill.
+                Click if you want to know.
+              </p>
+              <span class="num">02</span>
+            </a>
+          </li>
+          <li class="gnb_btn">
+            <a href="javascript:void(0);" class="page_go">
+              <h2 class="gnb_tit">Mobile</h2>
+              <p class="gnb_desc">
+                It's about me and my skill.
+                Click if you want to know.
+              </p>
+              <span class="num">03</span>
+            </a>
+          </li>
+          <li class="gnb_btn">
+            <a href="javascript:void(0);" class="page_go">
+              <h2 class="gnb_tit">Javascript</h2>
+              <p class="gnb_desc">
+                It's about me and my skill.
+                Click if you want to know.
+              </p>
+              <span class="num">04</span>
+            </a>
+          </li>
+        </ul>
       </div>
-      <ul class="gnb_nav">
-        <li class="gnb_btn" data-name="index">
-          <a href="javascript:void(0);" class="page_go">
-            <h2 class="gnb_tit">About</h2>
-            <p class="gnb_desc">
-              It's about me and my skill.
-              Click if you want to know.
-            </p>
-            <span class="num">01</span>
-          </a>
-        </li>
-        <li class="gnb_btn">
-          <a href="javascript:void(0);" class="page_go">
-            <h2 class="gnb_tit">WebSite</h2>
-            <p class="gnb_desc">
-              It's about me and my skill.
-              Click if you want to know.
-            </p>
-            <span class="num">02</span>
-          </a>
-        </li>
-        <li class="gnb_btn">
-          <a href="javascript:void(0);" class="page_go">
-            <h2 class="gnb_tit">Mobile</h2>
-            <p class="gnb_desc">
-              It's about me and my skill.
-              Click if you want to know.
-            </p>
-            <span class="num">03</span>
-          </a>
-        </li>
-        <li class="gnb_btn">
-          <a href="javascript:void(0);" class="page_go">
-            <h2 class="gnb_tit">Javascript</h2>
-            <p class="gnb_desc">
-              It's about me and my skill.
-              Click if you want to know.
-            </p>
-            <span class="num">04</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="typo_content">
 
-    </div>
-  </section>
+      <div class="typo_content">
+        <div id="typo_container">
+          <span id="text1"></span>
+          <span id="text2"></span>
+        </div>
+        <svg id="filters">
+          <defs>
+            <filter id="threshold">
+              <!-- 병합 효과시 filter 효과 -->
+              <feColorMatrix in="SourceGraphic"
+                  type="matrix"
+                  values="1 0 0 0 0
+                          0 1 0 0 0
+                          0 0 1 0 0
+                          0 0 0 255 -140" />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+
+    </section>
+
+    <section id="intro_section2">
+      <div class="about_me_txt_cont">
+        <h3 class="tit">About Me</h3>
+        <div class="body">
+          <p class="desc">상상한 무궁무진한 아이디어를 제가 배운 기술로 구현해가는 과정이 재밌습니다. 항상 새로운 시도를 두려워하지 않는 프론트엔드 개발자가 되겠습니다.</p>
+          <p class="desc">“smooth waters run deep” 제가 가장 좋아하는 영어 격언 입니다. 거칠고 빠르게 지나가는 물보다 잔잔하게 오랫동안 깊이 있게 흐르는 물처럼 꾸준히 공부하고, 계속 해서 나아갈 자신이 있습니다. 성실하게 쌓은 지식으로, 회사에 실질적인 도움이 되는 프론트엔드 개발자로 일하고 싶습니다.</p>
+        </div>
+      </div>
+      <div class="about_me_detail">
+        <div class="about_me_pic">
+          <img src="./assets/image/about_me_pic.jpg" alt="">
+        </div>
+        <ul class="about_me_info">
+          <li class="item name">
+            <svg id="check_icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="#fff">
+              <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/>
+            </svg>
+            <a href="javascript:void(0);" class="txt">이부레</a>
+          </li>
+          <li class="item birth">
+            <svg id="check_icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="#fff">
+              <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/>
+            </svg>
+            <a href="javascript:void(0);" class="txt">0000.00.00</a>
+          </li>
+          <li class="item git_page">
+            <svg id="check_icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="#fff">
+              <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/>
+            </svg>
+            <a href="javascript:void(0);" class="txt">unibure.github.io</a>
+          </li>
+          <li class="item email">
+            <svg id="check_icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="#fff">
+              <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/>
+            </svg>
+            <a href="javascript:void(0);" class="txt">unibure@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
 
 </body>
 </html>
