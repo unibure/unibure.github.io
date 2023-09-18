@@ -96,7 +96,6 @@ function animate() {
 		doCooldown();
 	}
 }
-
 // animate();
 
 
