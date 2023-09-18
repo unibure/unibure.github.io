@@ -1,12 +1,33 @@
-// 마우스 
-const circle = document.querySelector(".mouse_circle");
+// 마우스가 부르덥게 움직이기 위해서 animaition-duration을 사용해야함
+// const circle = document.querySelector(".mouse_circle");
+// document.addEventListener("mousemove", (e) => { 
+//     const mouseX = e.clientX;
+//     const mouseY = e.clientY;
+//     circle.style.left = mouseX + 'px';
+//     circle.style.top = mouseY + 'px';
+// });
 
-document.addEventListener("mousemove", (e) => { 
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-    circle.style.left = mouseX + 'px';
-    circle.style.top = mouseY + 'px';
-});
+//마우스 스크립트 lerp 사용 ( 부드럽게 움직이는 마우스 커서 사용시 lerp이용 )
+
+const circle = document.querySelector('.mouse_circle');
+let mouseX = 0 , mouseY = 0, startX = 0, startY = 0;
+window.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  
+  circle.style.transform = `translate(${mouseX}px, ${mouseY}px)`
+})
+function frame(){
+  requestAnimationFrame(frame)
+  startX = lerp(startX , mouseX, 0.05)
+  startY = lerp(startY , mouseY, 0.05)
+}
+requestAnimationFrame(frame);
+
+function lerp(s, e, a){
+  return s + (e - s) * a
+}
+
 
 
 //typo animation
