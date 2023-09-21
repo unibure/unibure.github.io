@@ -138,3 +138,75 @@ let overviewDesc = document.querySelectorAll('#intro_section2 .desc')
 });
 let overviewTitle = document.querySelector('#intro_section2 .tit')
   observer.observe(overviewTitle)
+
+
+      const canvas = document.querySelector('canvas')
+          canvas.width = window.innerWidth
+          canvas.height = window.innerHeight
+          const ctx = canvas.getContext('2d')
+
+          const TOTAL = 1500
+          const petalArray = []
+
+          const petalImg = new Image()
+          petalImg.src = './assets/image/star.png'
+          petalImg.onload = () => {
+            for (let i = 0; i < TOTAL; i++) {
+              petalArray.push(new Petal())
+            }
+            render()
+          }
+
+          function render() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            petalArray.forEach(petal => {
+              petal.animatee()
+            })
+
+            window.requestAnimationFrame(render)
+          }
+
+          window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
+          })
+
+          // 벚꽃 잎 클래스
+          class Petal {
+            constructor() {
+              this.x = Math.random() * canvas.width
+              this.y = Math.random() * canvas.height * 2 - canvas.height
+              this.w = 10 + Math.random() * 15
+              this.h = 10 + Math.random() * 10
+              this.opacity = this.w / 45
+              this.xSpeed = Math.random() * 0.08
+              this.ySpeed = Math.random() * 0.05
+              this.flip = Math.random()
+              this.flipSpeed = Math.random() * 0.01
+            }
+
+            draw() {
+              if (this.y > canvas.height || this.x > canvas.width) {
+                this.x = -petalImg.width
+                this.y = Math.random() * canvas.height * 2 - canvas.height
+                this.xSpeed = Math.random() * 0.08
+                this.ySpeed = Math.random() * 0.05
+                this.flip = Math.random()
+              }
+              ctx.globalAlpha = this.opacity
+              ctx.drawImage(
+                petalImg,
+                this.x,
+                this.y,
+                this.w * (0.4 + (Math.abs(Math.cos(this.flip)) / 3)),
+                this.h * (0.8 + (Math.abs(Math.sin(this.flip)) / 2)),
+              )
+            }
+
+            animatee() {
+              this.x += this.xSpeed
+              this.y += this.ySpeed
+              this.draw()
+              this.flip += this.flipSpeed
+            }
+    }
