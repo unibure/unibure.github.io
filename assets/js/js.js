@@ -1,124 +1,75 @@
-// 마우스가 부르덥게 움직이기 위해서 animaition-duration을 사용해야함
-// const circle = document.querySelector(".mouse_circle");
-// document.addEventListener("mousemove", (e) => { 
-//     const mouseX = e.clientX;
-//     const mouseY = e.clientY;
-//     circle.style.left = mouseX + 'px';
-//     circle.style.top = mouseY + 'px';
-// });
 
 //마우스 스크립트 lerp 사용 ( 부드럽게 움직이는 마우스 커서 사용시 lerp이용 )
 
-const circle = document.querySelector('.mouse_circle');
-let mouseX = 0 , mouseY = 0, startX = 0, startY = 0;
-window.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
+// const circle = document.querySelector('.mouse_circle');
+// let mouseX = 0 , mouseY = 0, startX = 0, startY = 0;
+// window.addEventListener('mousemove', e => {
+//   mouseX = e.clientX;
+//   mouseY = e.clientY;
   
-  circle.style.transform = `translate(${mouseX}px, ${mouseY}px)`
-})
-function frame(){
-  requestAnimationFrame(frame)
-  startX = lerp(startX , mouseX, 0.05)
-  startY = lerp(startY , mouseY, 0.05)
+//   circle.style.transform = `translate(${mouseX}px, ${mouseY}px)`
+// })
+// function frame(){
+//   requestAnimationFrame(frame)
+//   startX = lerp(startX , mouseX, 0.05)
+//   startY = lerp(startY , mouseY, 0.05)
+// }
+// requestAnimationFrame(frame);
+
+// function lerp(s, e, a){
+//   return s + (e - s) * a
+// }
+
+
+const cursorParent = document.getElementById('mouse_circle');
+const cursorChild = cursorParent.children[0];
+window.addEventListener('mousemove' , cursorMove)
+window.addEventListener('mousedown' , cursorDown)
+window.addEventListener('mouseup' , cursorUp)
+
+let stage = ''
+let color = ''
+let cursorX = 0, cursorY = 0;
+
+//HTMLElement.offsetWidth전용 속성은 요소의 레이아웃 너비를 정수로 반환합니다.
+function cursorMove(e){
+  cursorX = e.pageX - cursorParent.offsetWidth / 2
+  cursorY = e.pageY - cursorParent.offsetHeight / 2
+  cursorParent.style.transform = `translate3d(${cursorX}px , ${cursorY}px , 0)`
+
+  switch (e.target.getAttribute('data-cursor')) {
+    case 'title' :
+      if (stage === 'title') return;
+        scale = 5;
+        stage = 'title'
+        cursorParent.classList.add('cursor-text-mode')
+        cursorChild.setAttribute('data-name', e.target.getAttribute('data-name'))
+
+    case 'index' :
+      if (stage === 'index') return;
+        scale = 5;
+        stage = 'index';
+        cursorParent.classList.add('cursor-text-mode')
+        cursorChild.setAttribute('data-name', e.target.getAttribute('data-name'));
+      break;
+    default : 
+      if (stage === '')
+        scale = 1 ;
+        stage = ''
+        cursorParent.classList.remove('cursor-text-mode')
+        cursorChild.setAttribute('data-name', '')
+    }
+    cursorChild.style.setProperty('--cursor-scale' , scale)
 }
-requestAnimationFrame(frame);
-
-function lerp(s, e, a){
-  return s + (e - s) * a
-}
-
-
-
-//typo animation
-
-const elts = {
-	text1: document.getElementById("text1"),
-	text2: document.getElementById("text2")
-};
-
-//변형할 문자열 입력하기
-const texts = [
-  "Front End",
-  "Developer",
-	"unibure",
-	"Portfolio",
-];
-
-// 모핑의 속도를 제어
-const morphTime = 2;
-const cooldownTime = 0.25;
-
-let textIndex = texts.length - 1;
-let time = new Date();
-let morph = 0;
-let cooldown = cooldownTime;
-
-elts.text1.textContent = texts[textIndex % texts.length];
-elts.text2.textContent = texts[(textIndex + 1) % texts.length];
-
-function doMorph() {
-	morph -= cooldown;
-	cooldown = 0;
-	
-	let fraction = morph / morphTime;
-	
-	if (fraction > 1) {
-		cooldown = cooldownTime;
-		fraction = 1;
-	}
-	
-	setMorph(fraction);
-}
-
-// 텍스트에 흐림필터를 적용함
-function setMorph(fraction) {
-	// fraction = Math.cos(fraction * Math.PI) / -2 + .5;
-	
-	elts.text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-	elts.text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
-	
-	fraction = 1 - fraction;
-	elts.text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-	elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
-	
-	elts.text1.textContent = texts[textIndex % texts.length];
-	elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+function cursorDown(e){
+  scale *= 0.8
+  cursorChild.style.setProperty('--cursor-scale' , scale)
 }
 
-function doCooldown() {
-	morph = 0;
-	
-	elts.text2.style.filter = "";
-	elts.text2.style.opacity = "100%";
-	
-	elts.text1.style.filter = "";
-	elts.text1.style.opacity = "0%";
+function cursorUp(e){
+  scale *= 1.25
+  cursorChild.style.setProperty('--cursor-scale' , scale)
 }
-
-// 매 프레임마다 호출되는 loop
-function animate() {
-	requestAnimationFrame(animate);
-	
-	let newTime = new Date();
-	let shouldIncrementIndex = cooldown > 0;
-	let dt = (newTime - time) / 1000;
-	time = newTime;
-	
-	cooldown -= dt;
-	
-	if (cooldown <= 0) {
-		if (shouldIncrementIndex) {
-			textIndex++;
-		}
-		
-		doMorph();
-	} else {
-		doCooldown();
-	}
-}
-// animate();
-
 
 // 스크롤시 애니메이션
 let observer = new IntersectionObserver((e ) => {

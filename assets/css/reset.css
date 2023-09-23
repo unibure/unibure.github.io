@@ -8,7 +8,7 @@ html,body {
 }
 body {
 	font-size:1.2rem;
-  family: 'Nunito Sans', sans-serif;
+  font-family: var(--main-font);
 }
 
 div,span,article,section,header,footer,p,ul,li,fieldset,legend,label,a,nav {
