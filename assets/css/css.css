@@ -53,8 +53,8 @@ body {color:#fff;width: 100%; height: 100%; font-family: var(--main-font);}
 #intro_section1 .header .gnb_nav .gnb_btn .gnb_tit {pointer-events: none;font-size:1.5rem; }
 #intro_section1 .header .gnb_nav .gnb_btn .gnb_desc {pointer-events: none;font-size:1.1rem; padding: 0.8rem 0 0.5rem;}
 #intro_section1 .header .gnb_nav .gnb_btn .num {pointer-events: none;display: block;}
-#intro_section1 .main_visual {position: relative;  width: 100%; height: 100%; display: flex; align-items: flex-end; justify-content: center; height: 58vh; border:1px solid #fff; overflow: hidden;}
-#intro_section1 .main_visual #canvas {width: 100% !important; height: 100% !important; object-fit: cover; transform: translate(0,100px);}
+#intro_section1 .main_visual {position: relative;  width: 50%; height: 100%; border-radius: 50px; display: flex; align-items: flex-end; justify-content: center; height: 58vh; border:1px solid #fff; overflow: hidden; margin-left: auto;}
+#intro_section1 .main_visual #canvas {width: 100% !important; height: 100% !important; object-fit: cover; transform: translate(0,0px);}
 
 @keyframes progressAni {
   0% {width: 0;}

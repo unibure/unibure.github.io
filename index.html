@@ -85,7 +85,7 @@
         </ul>
       </div>
       <div class="main_visual">
-        <canvas id="canvas" width="1080px" height="1500px"></canvas>
+        <canvas id="canvas" width="1920" height="1080"></canvas>
         <script type="importmap">
           {
             "imports": {
@@ -111,7 +111,7 @@
           //PerspectiveCamera : 원근법이 적용된 카메라 
           //OrthographicCamera : 원근법이 적용이 안되는 카메라
           let camera = new THREE.PerspectiveCamera(30 , 1);
-          camera.position.set(30,20,30);
+          camera.position.set(20,20,1);
       
             //OrbitControls
             const controls = new OrbitControls(camera, renderer.domElement);
