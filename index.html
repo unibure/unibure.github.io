@@ -38,7 +38,7 @@
     <section id="intro_section1">
       <div class="header">
         <div class="top_head">
-          <h1 class="title ff--sub1" data-cursor="title" data-name="welcome"><span>Developer unibure</span></h1>
+          <h1 class="title ff--sub1"><span data-cursor="title" data-name="welcome">Developer unibure</span></h1>
         </div>
         <ul class="gnb_nav">
           <li class="gnb_btn">
@@ -84,7 +84,63 @@
           </li>
         </ul>
       </div>
-      <div class="visual"></div>
+      <div class="main_visual">
+        <canvas id="canvas" width="1080px" height="1500px"></canvas>
+        <script type="importmap">
+          {
+            "imports": {
+              "three": "https://unpkg.com/three@0.141.0/build/three.module.js",
+              "GLTFLoader" : "https://unpkg.com/three@0.141.0/examples/jsm/loaders/GLTFLoader.js"
+            }
+          }
+        </script>
+      
+        <script type="module">
+          import {GLTFLoader} from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+          import * as THREE from 'three';
+          import { OrbitControls } from './node_modules/three/examples/jsm/controls/OrbitControls.js';
+      
+          let scene = new THREE.Scene();
+          let renderer = new THREE.WebGLRenderer({
+            canvas : document.querySelector('#canvas'),
+            antialias : true
+          });
+          renderer.outputEncoding = THREE.sRGBEncoding;
+      
+        
+          //PerspectiveCamera : 원근법이 적용된 카메라 
+          //OrthographicCamera : 원근법이 적용이 안되는 카메라
+          let camera = new THREE.PerspectiveCamera(30 , 1);
+          camera.position.set(30,20,30);
+      
+            //OrbitControls
+            const controls = new OrbitControls(camera, renderer.domElement);
+            controls.update();
+      
+          // scene.background = new THREE.Color('transparent');
+          let light = new THREE.DirectionalLight(0xffff00, 10);
+          scene.add(light);
+      
+          let loader = new GLTFLoader();
+          loader.load('space/scene.gltf' , function(gltf){
+            scene.add(gltf.scene);
+      
+      
+            function animate(){
+              requestAnimationFrame(animate)
+              gltf.scene.rotation.y += 0.001;
+              // gltf.scene.rotation.x += 0.01;
+              controls.update();
+              renderer.render(scene, camera);
+            }
+            //orbitControl 
+            animate()
+          });
+      
+         
+      
+        </script>
+      </div>
 
     </section>
 
