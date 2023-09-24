@@ -22,13 +22,13 @@ body {color:#fff;width: 100%; height: 100%; font-family: var(--main-font);}
 .wrap {position: relative;width: 100%;height: auto; padding-right: 50px;}
 
 /* mouse custom */
-.mouse_circle { position: absolute;top:0; left:0; will-change: transform; transform:translate3d(-100% , -100% , 0);z-index: 1;}
-.mouse_circle .deco {position: relative; width: 30px;height: 30px; border-radius: 50%;  display: flex; align-items: center; justify-content: center; background-color: #05dfb0; --cursor-scale: 1; transform: scale3d(var(--cursor-scale), var(--cursor-scale) ,1); will-change: transform; transition: transform  0.15s ease-in-out, background-color 0.15s ease-in-out;  }
+.mouse_circle { position: absolute;top:0; left:0; will-change: transform; transform:translate3d(-100% , -100% , 0);pointer-events: none;z-index: 1;}
+.mouse_circle .deco {position: relative; width: 25px;height: 25px; border-radius: 50%;  display: flex; align-items: center; justify-content: center; background-color: #05dfb0; --cursor-scale: 1; transform: scale3d(var(--cursor-scale), var(--cursor-scale) ,1); will-change: transform; transition: transform  0.15s ease-in-out, background-color 0.15s ease-in-out;  }
 .mouse_circle .deco::after {  content: attr(data-name); position: absolute;  color: #323232; font-weight: 700;font-size: 0.5rem;  margin-bottom:0.2rem;  transform: scale(0.45);  white-space: nowrap;}
 .mouse_circle.cursor-text-mode .deco {  background-color: rgb(12, 255, 101) !important;}
 
 /* background */
-.index_bg {position: fixed; top:0;left:0; width: 100%; height: 100%; z-index:-1; }
+.index_bg {position: fixed; top:0;left:0; width: 100%; height: 100%; z-index:0; }
 
 
   /* nav_bar */

@@ -31,6 +31,8 @@ let stage = ''
 let color = ''
 let cursorX = 0, cursorY = 0;
 
+
+
 //HTMLElement.offsetWidth전용 속성은 요소의 레이아웃 너비를 정수로 반환합니다.
 function cursorMove(e){
   cursorX = e.pageX - cursorParent.offsetWidth / 2
